@@ -1,21 +1,66 @@
 @import "tailwindcss";
 
-@theme {
-  --color-deixis-black: #000000;
-  --color-deixis-gray: #6B7280;
-  --color-deixis-blue: #3B82F6;
-  --color-deixis-brown: #8B6914;
-  --color-deixis-yellow: #EAB308;
-  --font-title: "Orpheus Pro", "Times New Roman", serif;
-  --font-body: "Aktiv Grotesk", "Helvetica Neue", Arial, sans-serif;
+/* ── DEIXIS Brand Fonts ────────────────────────────── */
+@font-face {
+  font-family: 'Orpheus Pro';
+  src: url('/fonts/orpheus-pro.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-@layer base {
-  h1, h2, h3, h4 {
-    font-family: var(--font-title);
-  }
-  body {
-    font-family: var(--font-body);
-    color: var(--color-deixis-black);
-  }
+@font-face {
+  font-family: 'Orpheus Pro';
+  src: url('/fonts/orpheus-pro-italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aktiv Grotesk';
+  src: url('/fonts/aktiv-grotesk-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aktiv Grotesk';
+  src: url('/fonts/aktiv-grotesk-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aktiv Grotesk';
+  src: url('/fonts/aktiv-grotesk-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Brand Theme Tokens ────────────────────────────── */
+:root {
+  --color-deixis-black: #0a0a0a;
+  --color-deixis-white: #fafafa;
+  --color-deixis-warm: #f5f0eb;
+  --color-deixis-stone: #8a8278;
+  --color-deixis-gold: #c9a96e;
+}
+
+@theme inline {
+  --color-background: var(--color-deixis-white);
+  --color-foreground: var(--color-deixis-black);
+  --font-serif: 'Orpheus Pro', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Aktiv Grotesk', Helvetica, Arial, sans-serif;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
