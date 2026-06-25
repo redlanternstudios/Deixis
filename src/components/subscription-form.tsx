@@ -27,13 +27,13 @@ export function SubscriptionForm() {
           type="email"
           placeholder="Your email"
           disabled
-          className="border border-gray-300 px-4 py-2 text-sm w-64"
+          className="border border-gray-light px-4 py-2 text-sm w-64 bg-off-white"
         />
         <button
           disabled
-          className="bg-deixis-black text-white px-6 py-2 text-sm tracking-wider hover:bg-deixis-gray transition-colors"
+          className="btn btn-primary"
         >
-          SUBSCRIBE
+          Subscribe
         </button>
       </div>
     )
@@ -47,11 +47,11 @@ export function SubscriptionForm() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
-        className="border border-gray-300 px-4 py-2 text-sm w-64"
+        className="border border-gray-light px-4 py-2 text-sm w-64 bg-off-white"
       />
       <button
         type="submit"
-        className="bg-deixis-black text-white px-6 py-2 text-sm tracking-wider hover:bg-deixis-gray transition-colors"
+        className="btn btn-primary"
       >
         {submitted ? "SUBSCRIBED" : "SUBSCRIBE"}
       </button>

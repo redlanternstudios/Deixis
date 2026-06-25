@@ -2,13 +2,13 @@ import Link from 'next/link'
 
 export default function ArtistsLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-off-white">
       {/* Artists nav */}
-      <nav className="bg-white border-b border-gray-200 px-8 py-4">
+      <nav className="bg-off-white border-b border-gray-light px-8 py-4">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <Link href="/" className="text-xl font-title tracking-tight">
+          <Link href="/" className="text-xl font-serif tracking-tight font-semibold">
             DEIXIS{" "}
-            <span className="text-xs text-gray-400 font-normal">/ artists</span>
+            <span className="text-xs text-gray-subtle font-normal">/ artists</span>
           </Link>
         </div>
       </nav>

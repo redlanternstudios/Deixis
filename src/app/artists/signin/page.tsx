@@ -39,18 +39,18 @@ function SignInForm() {
   if (sent) {
     return (
       <div className="text-center py-16">
-        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-          <svg className="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div className="w-16 h-16 bg-gold bg-opacity-10 flex items-center justify-center mx-auto mb-6">
+          <svg className="w-8 h-8 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h2 className="text-2xl font-title mb-3">Check your email</h2>
-        <p className="text-gray-600 mb-6 max-w-md mx-auto">
+        <h2 className="text-2xl font-serif mb-3">Check your email</h2>
+        <p className="text-gray mb-6 max-w-md mx-auto">
           We sent a magic link to <strong>{email}</strong>. Click the link to sign in.
         </p>
         <button
           onClick={() => { setSent(false); setEmail('') }}
-          className="text-sm text-gray-500 hover:text-black underline"
+          className="text-sm text-gray hover:text-black underline"
         >
           Use a different email
         </button>
@@ -59,15 +59,15 @@ function SignInForm() {
   }
 
   return (
-    <div className="max-w-md mx-auto py-16">
+    <div className="max-w-md mx-auto py-16 px-8">
       {linkExpired && (
-        <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-8 text-sm text-amber-800">
+        <div className="bg-cream border border-gold p-4 mb-8 text-sm text-brown">
           That link has expired. Request a new one below.
         </div>
       )}
 
-      <h1 className="text-3xl font-title mb-2">Artist Sign In</h1>
-      <p className="text-gray-600 mb-8">Sign in with your email to access the artist dashboard.</p>
+      <h1 className="text-3xl font-serif mb-2">Artist Sign In</h1>
+      <p className="text-gray mb-8">Sign in with your email to access the artist dashboard.</p>
 
       <form onSubmit={handleSignIn} className="space-y-4">
         <div>
@@ -81,18 +81,18 @@ function SignInForm() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@example.com"
             required
-            className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="w-full border border-gray-light px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue focus:border-transparent bg-off-white"
           />
         </div>
 
         {error && (
-          <p className="text-sm text-red-600">{error}</p>
+          <p className="text-sm text-brown">{error}</p>
         )}
 
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-black text-white py-2.5 rounded-lg text-sm tracking-wider hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="w-full btn btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {loading ? 'Sending…' : 'Send magic link'}
         </button>

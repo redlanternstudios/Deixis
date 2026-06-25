@@ -53,30 +53,30 @@ export default async function DashboardPage() {
   const statusInfo = statusConfig[artist?.status || 'applied'] || statusConfig.applied
 
   return (
-    <div className="max-w-2xl mx-auto py-16">
-      <h1 className="text-3xl font-title mb-8">Artist Dashboard</h1>
+    <div className="max-w-2xl mx-auto py-16 px-8">
+      <h1 className="text-3xl font-serif mb-8">Artist Dashboard</h1>
 
-      <div className="bg-white border border-gray-200 rounded-xl p-8 space-y-6">
+      <div className="bg-cream border border-gray-light p-8 space-y-6">
         {/* Status badge */}
         <div className="flex items-center justify-between">
-          <span className={`px-3 py-1 rounded-full text-xs font-medium ${statusInfo.color}`}>
+          <span className={`px-3 py-1 text-xs font-medium border border-current ${statusInfo.color}`}>
             {statusInfo.label}
           </span>
         </div>
 
         {/* Status message */}
-        <p className="text-gray-600">{statusInfo.message}</p>
+        <p className="text-gray">{statusInfo.message}</p>
 
         {/* Email */}
-        <div className="pt-4 border-t border-gray-100">
-          <p className="text-sm text-gray-500">Signed in as</p>
+        <div className="pt-4 border-t border-gray-light">
+          <p className="text-sm text-gray-subtle">Signed in as</p>
           <p className="text-sm font-medium">{user.email}</p>
         </div>
 
         {/* Joined date */}
         {artist?.created_at && (
           <div>
-            <p className="text-sm text-gray-500">Application date</p>
+            <p className="text-sm text-gray-subtle">Application date</p>
             <p className="text-sm font-medium">
               {new Date(artist.created_at).toLocaleDateString('en-US', {
                 year: 'numeric',
@@ -88,11 +88,11 @@ export default async function DashboardPage() {
         )}
 
         {/* Sign out */}
-        <div className="pt-4 border-t border-gray-100">
+        <div className="pt-4 border-t border-gray-light">
           <form action="/artists/auth/signout" method="post">
             <button
               type="submit"
-              className="text-sm text-gray-500 hover:text-red-600 underline transition-colors"
+              className="text-sm text-gray-subtle hover:text-blue underline transition-colors"
             >
               Sign out
             </button>
