@@ -1,16 +1,40 @@
-const STORE_DOMAIN = process.env.SHOPIFY_STORE_DOMAIN!
-const STOREFRONT_TOKEN = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!
+import { createStorefrontClient } from '@shopify/hydrogen-react';
+import { env } from './env';
 
-const SHOPIFY_API_URL = `https://${STORE_DOMAIN}/api/2024-01/graphql.json`
+const storeDomain = env.SHOPIFY_STORE_DOMAIN;
+const privateStorefrontToken = env.SHOPIFY_STOREFRONT_ACCESS_TOKEN;
 
-export async function shopifyQuery(query: string, variables?: Record<string, unknown>) {
-  const res = await fetch(SHOPIFY_API_URL, {
+export const shopifyClient = createStorefrontClient({
+  storeDomain,
+  privateStorefrontToken,
+  storefrontApiVersion: '2024-07',
+});
+
+export async function shopifyQuery<T>(query: string, variables?: Record<string, unknown>): Promise<T> {
+  const url = shopifyClient.getStorefrontApiUrl();
+  const headers = shopifyClient.getPrivateTokenHeaders();
+
+  const response = await fetch(url, {
     method: 'POST',
     headers: {
+      ...headers,
       'Content-Type': 'application/json',
-      'X-Shopify-Storefront-Access-Token': STOREFRONT_TOKEN,
     },
-    body: JSON.stringify({ query, variables }),
-  })
-  return res.json()
+    body: JSON.stringify({
+      query,
+      variables,
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Shopify API error: ${response.status} ${response.statusText}`);
+  }
+
+  const json = await response.json();
+
+  if (json.errors) {
+    throw new Error(`Shopify query error: ${JSON.stringify(json.errors)}`);
+  }
+
+  return json.data as T;
 }
