@@ -4,6 +4,9 @@ import "./globals.css"
 export const metadata: Metadata = {
   title: "Deixis — Contemporary Art Gallery",
   description: "A curated consignment art gallery and online store. Barrio Logan, San Diego.",
+  icons: {
+    icon: "/deixis-mark.svg",
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

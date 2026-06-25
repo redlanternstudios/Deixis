@@ -1,14 +1,13 @@
 import Link from "next/link"
 import { SubscriptionForm } from "@/components/subscription-form"
+import { BrandedHeader } from "@/components/branded-header"
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-off-white">
       {/* Navigation */}
       <nav className="flex items-center justify-between px-8 py-6 border-b border-gray-light">
-        <div className="flex items-center gap-2">
-          <span className="text-2xl font-serif font-semibold tracking-tight">DEIXIS</span>
-        </div>
+        <BrandedHeader />
         <div className="flex gap-8 text-sm tracking-wider uppercase font-medium">
           <Link href="/shop" className="hover:text-blue transition-colors">Shop</Link>
           <Link href="/salon" className="hover:text-blue transition-colors">Salon</Link>
