@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { SubscriptionForm } from "@/components/subscription-form"
 
 export default function Home() {
   return (
@@ -53,16 +54,7 @@ export default function Home() {
           <p className="text-deixis-gray max-w-lg mx-auto mb-6">
             Time-bound drops featuring exclusive collections. Join the mailing list for early access.
           </p>
-          <div className="flex justify-center gap-2">
-            <input
-              type="email"
-              placeholder="Your email"
-              className="border border-gray-300 px-4 py-2 text-sm w-64"
-            />
-            <button className="bg-deixis-black text-white px-6 py-2 text-sm tracking-wider hover:bg-deixis-gray transition-colors">
-              SUBSCRIBE
-            </button>
-          </div>
+          <SubscriptionForm />
         </div>
       </section>
 
