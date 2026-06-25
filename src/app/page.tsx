@@ -1,75 +1,16 @@
-import Link from "next/link"
+import Link from 'next/link'
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      {/* Navigation */}
-      <nav className="flex items-center justify-between px-8 py-6 border-b border-gray-200">
-        <div className="flex items-center gap-2">
-          <span className="text-2xl font-title">DEIXIS</span>
-        </div>
-        <div className="flex gap-8 text-sm tracking-wide">
-          <Link href="/shop" className="hover:text-deixis-blue transition-colors">SHOP</Link>
-          <Link href="/salon" className="hover:text-deixis-blue transition-colors">SALON</Link>
-          <Link href="/about" className="hover:text-deixis-blue transition-colors">ABOUT</Link>
-          <Link href="/contact" className="hover:text-deixis-blue transition-colors">CONTACT</Link>
-        </div>
-      </nav>
-
-      {/* Hero */}
-      <section className="px-8 py-24 max-w-6xl mx-auto">
-        <h1 className="text-5xl md:text-7xl font-title tracking-tight mb-6">
-          Contemporary Art<br />
-          <span className="text-deixis-gray">from Barrio Logan</span>
-        </h1>
-        <p className="text-lg text-deixis-gray max-w-xl mb-8">
-          A curated consignment gallery connecting collectors with exceptional artists.
-          Every purchase directly supports the artists who create the work.
-        </p>
-        <Link
-          href="/shop"
-          className="inline-block bg-deixis-black text-white px-8 py-3 text-sm tracking-wider hover:bg-deixis-gray transition-colors"
-        >
-          EXPLORE WORKS
-        </Link>
-      </section>
-
-      {/* Featured Works placeholder */}
-      <section className="px-8 py-16 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-title mb-8">Featured Works</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[1, 2, 3].map((i) => (
-            <div key={i} className="aspect-[4/5] bg-gray-100 flex items-center justify-center text-deixis-gray">
-              Featured Work {i}
-            </div>
-          ))}
+    <div className="flex flex-col flex-1">
+      <section className="flex flex-1 flex-col items-center justify-center px-6 py-32 text-center">
+        <h1 className="font-serif text-6xl md:text-8xl mb-6 tracking-tight">Deixis</h1>
+        <p className="font-serif text-xl md:text-2xl italic text-[var(--color-deixis-stone)] mb-12">The art of elsewhere</p>
+        <div className="flex gap-6">
+          <Link href="/shop" className="px-8 py-3 border-2 border-[var(--color-deixis-black)] text-sm tracking-widest uppercase hover:bg-[var(--color-deixis-black)] hover:text-[var(--color-deixis-white)] transition-colors">Shop Art</Link>
+          <Link href="/exhibitions" className="px-8 py-3 border-2 border-[var(--color-deixis-stone)]/30 text-sm tracking-widest uppercase hover:border-[var(--color-deixis-black)] transition-colors">Exhibitions</Link>
         </div>
       </section>
-
-      {/* Salon de Deixis teaser */}
-      <section className="px-8 py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl font-title mb-4">Salon de Deixis</h2>
-          <p className="text-deixis-gray max-w-lg mx-auto mb-6">
-            Time-bound drops featuring exclusive collections. Join the mailing list for early access.
-          </p>
-          <div className="flex justify-center gap-2">
-            <input
-              type="email"
-              placeholder="Your email"
-              className="border border-gray-300 px-4 py-2 text-sm w-64"
-            />
-            <button className="bg-deixis-black text-white px-6 py-2 text-sm tracking-wider hover:bg-deixis-gray transition-colors">
-              SUBSCRIBE
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="px-8 py-8 text-center text-xs text-deixis-gray">
-        <p>© 2026 Deixis Gallery. Barrio Logan, San Diego.</p>
-      </footer>
-    </main>
+    </div>
   )
 }
