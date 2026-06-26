@@ -1,20 +1,17 @@
 import Link from "next/link"
+import BrandedHeader from "@/components/branded-header"
+
+const NAV_LINKS = [
+  { href: "/shop", label: "SHOP" },
+  { href: "/salon", label: "SALON" },
+  { href: "/about", label: "ABOUT" },
+  { href: "/contact", label: "CONTACT" },
+]
 
 export default function Home() {
   return (
     <main className="min-h-screen">
-      {/* Navigation */}
-      <nav className="flex items-center justify-between px-8 py-6 border-b border-gray-200">
-        <div className="flex items-center gap-2">
-          <span className="text-2xl font-title">DEIXIS</span>
-        </div>
-        <div className="flex gap-8 text-sm tracking-wide">
-          <Link href="/shop" className="hover:text-deixis-blue transition-colors">SHOP</Link>
-          <Link href="/salon" className="hover:text-deixis-blue transition-colors">SALON</Link>
-          <Link href="/about" className="hover:text-deixis-blue transition-colors">ABOUT</Link>
-          <Link href="/contact" className="hover:text-deixis-blue transition-colors">CONTACT</Link>
-        </div>
-      </nav>
+      <BrandedHeader links={NAV_LINKS} />
 
       {/* Hero */}
       <section className="px-8 py-24 max-w-6xl mx-auto">
