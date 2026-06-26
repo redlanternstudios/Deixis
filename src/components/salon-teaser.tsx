@@ -15,8 +15,8 @@ export function SalonTeaser() {
   }
 
   return (
-    <section className="bg-deixis-cream py-20 md:py-28">
-      <div className="max-w-2xl mx-auto px-6 md:px-8 text-center">
+    <section className="bg-deixis-cream py-20 md:py-28" suppressHydrationWarning>
+      <div className="max-w-2xl mx-auto px-6 md:px-8 text-center" suppressHydrationWarning>
         <p className="text-xs tracking-[0.25em] text-deixis-gold uppercase mb-4">
           Exclusive Drops
         </p>
@@ -32,7 +32,7 @@ export function SalonTeaser() {
             You&apos;re on the list. We&apos;ll notify you about the next drop.
           </p>
         ) : (
-          <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row max-w-sm mx-auto">
+          <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row max-w-sm mx-auto" suppressHydrationWarning>
             <input
               type="email"
               required
