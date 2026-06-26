@@ -1,5 +1,6 @@
 import Link from "next/link"
 import BrandedHeader from "@/components/branded-header"
+import { SalonTeaser } from "@/components/salon-teaser"
 
 const NAV_LINKS = [
   { href: "/shop", label: "SHOP" },
@@ -134,38 +135,8 @@ export default function Home() {
       {/* ── DIVIDER ── */}
       <div className="border-t border-gray-200" />
 
-      {/* ── SALON TEASER ── back to cream */}
-      <section className="bg-deixis-cream py-20 md:py-28">
-        <div className="max-w-2xl mx-auto px-6 md:px-8 text-center">
-          <p className="text-xs tracking-[0.25em] text-deixis-gold uppercase mb-4">
-            Exclusive Drops
-          </p>
-          <h2 className="text-4xl md:text-5xl font-title mb-6">Salon de Deixis</h2>
-          <p className="text-deixis-gray leading-relaxed mb-10">
-            Time-bound drops featuring exclusive collections.
-            Join the mailing list for early access.
-          </p>
-
-          {/* Email form — inline on sm+ */}
-          <div className="flex flex-col sm:flex-row max-w-sm mx-auto">
-            <input
-              type="email"
-              placeholder="Your email"
-              className="flex-1 border border-gray-300 border-r-0 px-4 py-3 text-sm bg-white focus:outline-none focus:border-deixis-black sm:border-r-0"
-            />
-            <button className="bg-deixis-black text-white px-6 py-3 text-xs tracking-[0.18em] hover:bg-gray-800 transition-colors whitespace-nowrap border border-deixis-black uppercase">
-              Subscribe
-            </button>
-          </div>
-
-          <p className="text-xs text-deixis-gray mt-5">
-            Or{" "}
-            <Link href="/salon" className="underline underline-offset-2 hover:text-deixis-black transition-colors">
-              view the current drop
-            </Link>
-          </p>
-        </div>
-      </section>
+      {/* ── SALON TEASER ── */}
+      <SalonTeaser />
 
       {/* ── FOOTER ── */}
       <footer className="bg-deixis-black text-white py-10 px-6 md:px-8">
