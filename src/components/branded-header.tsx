@@ -1,61 +1,7 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
-
-/**
- * Inline SVG gyroscope mark — concentric orbital ellipses with a central dot.
- * Rendered in black on a transparent background, sized to 28px height.
- * No external file dependency.
- */
-function GyroscopeMark({ className }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 28 28"
-      height="28"
-      width="28"
-      aria-hidden="true"
-      className={className}
-      fill="none"
-    >
-      {/* Outer orbital ellipse — tilted ~30° */}
-      <ellipse
-        cx="14"
-        cy="14"
-        rx="12"
-        ry="5"
-        transform="rotate(-30 14 14)"
-        stroke="black"
-        strokeWidth="1.25"
-        fill="none"
-      />
-      {/* Middle orbital ellipse — tilted ~30° the other way */}
-      <ellipse
-        cx="14"
-        cy="14"
-        rx="12"
-        ry="5"
-        transform="rotate(30 14 14)"
-        stroke="black"
-        strokeWidth="1.25"
-        fill="none"
-      />
-      {/* Inner orbital ellipse — nearly vertical */}
-      <ellipse
-        cx="14"
-        cy="14"
-        rx="12"
-        ry="5"
-        transform="rotate(90 14 14)"
-        stroke="black"
-        strokeWidth="1.25"
-        fill="none"
-      />
-      {/* Central dot */}
-      <circle cx="14" cy="14" r="1.75" fill="black" />
-    </svg>
-  )
-}
 
 interface BrandedHeaderProps {
   /** Optional extra nav links rendered to the right of the wordmark */
@@ -69,8 +15,15 @@ export default function BrandedHeader({ links, subLabel }: BrandedHeaderProps) {
       <header className="bg-white border-b border-gray-200">
       <div className="max-w-6xl mx-auto px-8 py-6 flex items-center justify-between">
         {/* Wordmark + gyroscope mark */}
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <GyroscopeMark className="flex-shrink-0 opacity-90 group-hover:opacity-100 transition-opacity" />
+        <Link href="/" className="flex items-center gap-3 group">
+          <Image
+            src="/deixis-mark.png"
+            alt="Deixis mark"
+            width={32}
+            height={32}
+            className="flex-shrink-0 opacity-90 group-hover:opacity-100 transition-opacity"
+            priority
+          />
           <span className="text-2xl font-title tracking-tight leading-none">
             DEIXIS
             {subLabel && (
