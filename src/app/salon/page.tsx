@@ -61,9 +61,14 @@ function CountdownUnit({ value, label }: { value: number; label: string }) {
 }
 
 export default function SalonPage() {
+  const [mounted, setMounted] = useState(false)
   const countdown = useCountdown(OPENS_AT)
   const [email, setEmail] = useState("")
   const [subscribed, setSubscribed] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   function handleSubscribe(e: React.FormEvent) {
     e.preventDefault()
@@ -94,19 +99,26 @@ export default function SalonPage() {
 
             {/* Countdown */}
             <div>
-              <p className="text-xs tracking-[0.15em] uppercase text-deixis-gray mb-5">
-                {countdown.isOpen ? "Drop is open now" : "Opens in"}
-              </p>
-              {!countdown.isOpen && (
-                <div className="flex gap-6">
-                  <CountdownUnit value={countdown.days} label="Days" />
-                  <span className="font-title text-4xl text-black/20 self-start mt-1">:</span>
-                  <CountdownUnit value={countdown.hours} label="Hours" />
-                  <span className="font-title text-4xl text-black/20 self-start mt-1">:</span>
-                  <CountdownUnit value={countdown.minutes} label="Min" />
-                  <span className="font-title text-4xl text-black/20 self-start mt-1">:</span>
-                  <CountdownUnit value={countdown.seconds} label="Sec" />
-                </div>
+              {!mounted ? (
+                // Placeholder with same dimensions to prevent layout shift
+                <div className="h-32" />
+              ) : (
+                <>
+                  <p className="text-xs tracking-[0.15em] uppercase text-deixis-gray mb-5">
+                    {countdown.isOpen ? "Drop is open now" : "Opens in"}
+                  </p>
+                  {!countdown.isOpen && (
+                    <div className="flex gap-6">
+                      <CountdownUnit value={countdown.days} label="Days" />
+                      <span className="font-title text-4xl text-black/20 self-start mt-1">:</span>
+                      <CountdownUnit value={countdown.hours} label="Hours" />
+                      <span className="font-title text-4xl text-black/20 self-start mt-1">:</span>
+                      <CountdownUnit value={countdown.minutes} label="Min" />
+                      <span className="font-title text-4xl text-black/20 self-start mt-1">:</span>
+                      <CountdownUnit value={countdown.seconds} label="Sec" />
+                    </div>
+                  )}
+                </>
               )}
             </div>
 
