@@ -31,12 +31,15 @@ const PAST_DROPS = [
 ]
 
 function useCountdown(target: Date) {
-  const [remaining, setRemaining] = useState(() => Math.max(0, target.getTime() - Date.now()))
+  // Initialize at 0 to match server render — real value set in useEffect (client only)
+  const [remaining, setRemaining] = useState(0)
 
   useEffect(() => {
-    const id = setInterval(() => {
+    function tick() {
       setRemaining(Math.max(0, target.getTime() - Date.now()))
-    }, 1000)
+    }
+    tick()
+    const id = setInterval(tick, 1000)
     return () => clearInterval(id)
   }, [target])
 
@@ -100,8 +103,8 @@ export default function SalonPage() {
             {/* Countdown */}
             <div>
               {!mounted ? (
-                // Placeholder with same dimensions to prevent layout shift
-                <div className="h-32" />
+                // Stable placeholder — prevents layout shift and hydration mismatch
+                <div className="h-32" aria-hidden="true" />
               ) : (
                 <>
                   <p className="text-xs tracking-[0.15em] uppercase text-deixis-gray mb-5">
@@ -154,13 +157,11 @@ export default function SalonPage() {
 
           {/* Blurred preview image */}
           <div className="relative aspect-[4/5] bg-[#C8C4BC] overflow-hidden">
-            {/* Blurred shapes to suggest artwork content */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="w-32 h-48 bg-[#9A948C] opacity-60 blur-2xl" />
               <div className="absolute w-20 h-20 bg-[#7A7470] opacity-40 blur-xl top-1/4 left-1/4" />
             </div>
             <div className="absolute inset-0 backdrop-blur-md" />
-            {/* COMING SOON overlay */}
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
               <div className="w-8 h-px bg-deixis-gold" />
               <span className="text-xs tracking-[0.3em] uppercase text-white font-medium">
